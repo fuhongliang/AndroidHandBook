@@ -26,10 +26,6 @@ public class ToastHelper extends AbstractToast {
      */
     public static final int NORMALTOAST = 0;
     /**
-     * 只有图标
-     */
-    public static final int ICONTOAST = 1;
-    /**
      * 成功并且带有图标
      */
     public static final int SUCCESSWITHICONTOAST = 2;
@@ -37,6 +33,16 @@ public class ToastHelper extends AbstractToast {
      * 失败加上图标
      */
     public static final int FAILWITHICONTOAST = 3;
+    /**
+     * 警告
+     */
+    public static final int WARNWITHICONTOAST = 1;
+
+    /**
+     * 警告
+     */
+    public static final int ONLYWORDTOAST = 4;
+
     /**
      * 当前样式
      */
@@ -59,14 +65,17 @@ public class ToastHelper extends AbstractToast {
             case NORMALTOAST:
                 view = LayoutInflater.from(mContext).inflate(R.layout.toast_normal_layout, null, false);
                 break;
-            case ICONTOAST:
-                view = LayoutInflater.from(mContext).inflate(R.layout.toast_ok_layout, null, false);
-                break;
             case SUCCESSWITHICONTOAST:
                 view = LayoutInflater.from(mContext).inflate(R.layout.toast_ok_layout, null, false);
                 break;
             case FAILWITHICONTOAST:
-                view = LayoutInflater.from(mContext).inflate(R.layout.toast_ok_layout, null, false);
+                view = LayoutInflater.from(mContext).inflate(R.layout.toast_fail_layout, null, false);
+                break;
+            case WARNWITHICONTOAST:
+                view = LayoutInflater.from(mContext).inflate(R.layout.toast_warn_layout, null, false);
+                break;
+            case ONLYWORDTOAST:
+                view = LayoutInflater.from(mContext).inflate(R.layout.toast_word_layout, null, false);
                 break;
            default:
                view = LayoutInflater.from(mContext).inflate(R.layout.toast_ok_layout, null, false);

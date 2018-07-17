@@ -27,10 +27,7 @@ import okhttp3.RequestBody;
  * @author tony
  */
 public class MainActivity extends AppCompatActivity {
-    public static final String[] ITEMS = {"通用toast", "强调toast", "可点击toast"
-            , "通用 + 成功toast", "通用 + 警告toast", "通用 + 错误toast"
-            , "强调 + 成功toast", "强调 + 警告toast", "强调 + 错误toast"
-            , "可点击 + 成功toast", "可点击 + 警告toast", "可点击 + 错误toast"};
+    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast","文字toast"};
 
     ListView mListview;
 
@@ -54,7 +51,17 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         showSuccessToast();
                         break;
+                    case 2:
+                        showFailToast();
+                        break;
+                    case 3:
+                        showWarnToast();
+                        break;
+                    case 4:
+                        showToast();
+                        break;
                     default:
+                        break;
                 }
             }
         });
@@ -64,9 +71,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showSuccessToast() {
-        ToastHelper.makeText("上传成功", Toast.LENGTH_SHORT,ToastHelper.SUCCESSWITHICONTOAST).show();
+        ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT,ToastHelper.SUCCESSWITHICONTOAST).show();
     }
 
+    public void showFailToast() {
+        ToastHelper.makeText("关注失败", Toast.LENGTH_SHORT,ToastHelper.FAILWITHICONTOAST).show();
+    }
+
+    public void showWarnToast() {
+        ToastHelper.makeText("提示", Toast.LENGTH_SHORT,ToastHelper.WARNWITHICONTOAST).show();
+    }
+
+    public void showToast() {
+        ToastHelper.makeText("登录成功！", Toast.LENGTH_SHORT,ToastHelper.ONLYWORDTOAST).show();
+    }
     public void login() {
         RetrofitManager.getClient().create(LoginService.class).auth(new LoginService.LoginRequest())
                 .subscribeOn(Schedulers.io())
