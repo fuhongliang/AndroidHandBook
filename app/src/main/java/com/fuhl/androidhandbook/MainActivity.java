@@ -6,11 +6,17 @@ import android.os.Bundle;
 import com.fuhl.androidhandbook.api.BaseEntity;
 import com.fuhl.androidhandbook.api.BaseObserver;
 import com.fuhl.androidhandbook.api.RetrofitManager;
+import com.fuhl.androidhandbook.api.service.FileUploadService;
 import com.fuhl.androidhandbook.api.service.LoginService;
+
+import java.io.File;
 
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +49,31 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
 
+                    }
+                });
+    }
+
+    public void upLoadFile(String mPath){
+        File file = new File(mPath);
+        RequestBody requestFile =
+                RequestBody.create(MediaType.parse("image/png"), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+        RetrofitManager.getUploadClient().create(FileUploadService.class)
+                .uploads(body).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseObserver<FileUploadService.FileModel>() {
+                    @Override
+                    protected void onSuccees(BaseEntity<FileUploadService.FileModel> t) throws Exception {
+
+                    }
+
+                    @Override
+                    protected void onFailure(Throwable e, boolean isNetWorkError) throws Exception {
+                    }
+
+                    @Override
+                    protected void onCodeError(BaseEntity<FileUploadService.FileModel> t) throws Exception {
+                        super.onCodeError(t);
                     }
                 });
     }
