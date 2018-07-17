@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidHandBook</string>
+    <string name="modify_success">关注成功</string>
 </resources>
