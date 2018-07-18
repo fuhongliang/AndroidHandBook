@@ -40,23 +40,29 @@ Json接口请求
 
 # [Toast提示](https://github.com/fuhongliang/AndroidHandBook/tree/master/app/src/main/java/com/fuhl/androidhandbook/toast)
 Toast分为五种类型
-1. 横条Toast
+1. 横条Toast  
+
 ![](./pic/h_toast.gif)
 
-2. 成功Toast
+2. 成功Toast  
+
 ![](./pic/success_toast.gif)
 
-3. 失败Toast
+3. 失败Toast  
+
 ![](./pic/fail_toast.gif)
 
-4. 警告Toast
+4. 警告Toast  
+
 ![](./pic/warn_toast.gif)
 
-5. 普通文本Toast
+5. 普通文本Toast  
+
 ![](./pic/txt_toast.gif)
 
 可自定义高，只需要更换对应布局文件即可自定义想要的Toast效果
-使用上也很方便
+使用上也很方便  
+
 ``` java
  public void showSuccessToast() {
         ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT,ToastHelper.SUCCESSWITHICONTOAST).show();
