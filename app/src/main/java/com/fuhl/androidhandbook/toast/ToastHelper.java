@@ -59,6 +59,10 @@ public class ToastHelper extends AbstractToast {
         init(style);
     }
 
+    /**
+     * 根据样式进行加载不同的布局文件进行初始化
+     * @param style toast样式
+     */
     private void init(int style){
         View view;
         switch (style){
@@ -88,6 +92,13 @@ public class ToastHelper extends AbstractToast {
         setDuration(Toast.LENGTH_LONG);
     }
 
+    /**
+     * 创建ToastHelper
+     * @param text toast文本
+     * @param duration 时间长短
+     * @param style 样式
+     * @return
+     */
     public static ToastHelper makeText(CharSequence text, int duration,int style) {
         text = TextUtils.isEmpty(text)?"":text;
         if (sToast != null && sToast.get() != null && CURRENTTOAST == style) {
@@ -102,11 +113,18 @@ public class ToastHelper extends AbstractToast {
         return sToast.get();
     }
 
+    /**
+     * 设置toast内容
+     * @param s 文本内容
+     */
     @Override
     public void setText(CharSequence s) {
         mTextView.setText(s);
     }
 
+    /**
+     * toast show
+     */
     @Override
     public void show() {
         String message = mTextView.getText().toString();
