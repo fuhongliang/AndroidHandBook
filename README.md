@@ -1,10 +1,10 @@
-# AndroidHandBook
+# AndroidHandBook :snail:
 整理个人工作中用到的Android 通用功能
 
 # 网络请求
-Retrofit+okhttp+RX
-https://github.com/square/retrofit
-http://square.github.io/retrofit/
+Retrofit+okhttp+RX  
+https://github.com/square/retrofit  
+http://square.github.io/retrofit/  
 ## 使用步骤：
 1. 集成
 ``` java
