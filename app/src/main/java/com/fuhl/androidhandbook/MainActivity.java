@@ -1,5 +1,6 @@
 package com.fuhl.androidhandbook;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.fuhl.androidhandbook.api.RetrofitManager;
 import com.fuhl.androidhandbook.api.service.FileUploadService;
 import com.fuhl.androidhandbook.api.service.LoginService;
 import com.fuhl.androidhandbook.dialog.LoadingDialog;
+import com.fuhl.androidhandbook.dialog.MessageDialog;
 import com.fuhl.androidhandbook.toast.ToastHelper;
 
 import java.io.File;
@@ -29,7 +31,7 @@ import okhttp3.RequestBody;
  * @author tony
  */
 public class MainActivity extends AppCompatActivity {
-    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast","文字toast","Loading对话框"};
+    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast","文字toast","Loading对话框","消息对话框"};
 
     ListView mListview;
 
@@ -65,9 +67,21 @@ public class MainActivity extends AppCompatActivity {
                     case 5:
                         showLoadingDialog();
                         break;
+                    case 6:
+                        showMessageDialog();
+                        break;
                     default:
                         break;
                 }
+            }
+        });
+    }
+
+    public void showMessageDialog(){
+        MessageDialog.show(this,"消息提示框","你已报名成功了","知道了",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
             }
         });
     }
