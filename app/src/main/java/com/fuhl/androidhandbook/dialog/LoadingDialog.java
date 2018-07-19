@@ -54,7 +54,6 @@ public class LoadingDialog extends BaseDialog {
             loadingDialog.tip = tip;
             loadingDialog.tip_theme = mTipTheme;
             loadingDialog.showDialog();
-            loadingDialog.log("显示等待对话框 -> " + tip);
             return loadingDialog;
         }
     }
