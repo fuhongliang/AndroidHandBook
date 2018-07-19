@@ -58,4 +58,19 @@ Toast分为五种类型
  使用简单  
  LoadingDialog.show(this, "载入中...",0);
 
+ # 消息对话框
+ ![](./pic/messagedialog.gif) 
+ 
+ 使用简单  
+ ``` java 
+ public void showMessageDialog(){
+        MessageDialog.show(this,"消息提示框","你已报名成功了","知道了",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+    } 
+    
+ ```
 
