@@ -100,15 +100,10 @@ public class ToastHelper extends AbstractToast {
      */
     public static ToastHelper makeText(CharSequence text, int duration,int style) {
         text = TextUtils.isEmpty(text)?"":text;
-        if (toastHelper != null && CURRENTTOAST == style) {
-            toastHelper.setText(text);
-            toastHelper.setDuration(duration);
-        } else {
-            reset();
-            toastHelper = new ToastHelper(MyApplication.getApplication(),style);
-            toastHelper.setText(text);
-            toastHelper.setDuration(duration);
-        }
+        reset();
+        toastHelper = new ToastHelper(MyApplication.getApplication(),style);
+        toastHelper.setText(text);
+        toastHelper.setDuration(duration);
         return toastHelper;
     }
 
