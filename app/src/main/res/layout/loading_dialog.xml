@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:id="@+id/box_info"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:visibility="visible">
+
+            <RelativeLayout
+                android:id="@+id/box_bkg"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+            <com.fuhl.androidhandbook.dialog.ProgressView
+                android:id="@+id/progress"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/txt_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:layout_below="@+id/progress"
+                android:gravity="center"
+                android:maxLines="3"
+                android:text="Tip"
+                android:textColor="?attr/colorAccent"
+                android:textSize="14dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

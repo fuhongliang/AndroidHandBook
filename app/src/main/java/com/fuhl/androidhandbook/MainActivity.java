@@ -1,6 +1,7 @@
 package com.fuhl.androidhandbook;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import com.fuhl.androidhandbook.api.BaseObserver;
 import com.fuhl.androidhandbook.api.RetrofitManager;
 import com.fuhl.androidhandbook.api.service.FileUploadService;
 import com.fuhl.androidhandbook.api.service.LoginService;
+import com.fuhl.androidhandbook.dialog.LoadingDialog;
 import com.fuhl.androidhandbook.toast.ToastHelper;
 
 import java.io.File;
@@ -27,7 +29,7 @@ import okhttp3.RequestBody;
  * @author tony
  */
 public class MainActivity extends AppCompatActivity {
-    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast","文字toast"};
+    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast","文字toast","Loading对话框"};
 
     ListView mListview;
 
@@ -60,12 +62,26 @@ public class MainActivity extends AppCompatActivity {
                     case 4:
                         showToast();
                         break;
+                    case 5:
+                        showLoadingDialog();
+                        break;
                     default:
                         break;
                 }
             }
         });
     }
+
+    public void showLoadingDialog(){
+        LoadingDialog.show(this, "载入中...",0);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LoadingDialog.dismiss();
+            }
+        }, 3000);
+    }
+
     public void showNormalToast() {
         ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT,ToastHelper.NORMALTOAST).show();
     }

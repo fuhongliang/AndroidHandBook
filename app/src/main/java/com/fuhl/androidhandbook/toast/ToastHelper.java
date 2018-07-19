@@ -10,15 +10,14 @@ import android.widget.Toast;
 
 import com.fuhl.androidhandbook.MyApplication;
 import com.fuhl.androidhandbook.R;
-
-import java.lang.ref.WeakReference;
+import com.orhanobut.logger.Logger;
 
 /**
  * @author tony  自动生成帅哥一枚，谁用谁知道
  * @date 2018/7/17
  */
 public class ToastHelper extends AbstractToast {
-    private static WeakReference<ToastHelper> sToast;
+    private static ToastHelper toastHelper;
     private Context mContext;
     private TextView mTextView;
     /**
@@ -101,16 +100,16 @@ public class ToastHelper extends AbstractToast {
      */
     public static ToastHelper makeText(CharSequence text, int duration,int style) {
         text = TextUtils.isEmpty(text)?"":text;
-        if (sToast != null && sToast.get() != null && CURRENTTOAST == style) {
-            sToast.get().setText(text);
-            sToast.get().setDuration(duration);
+        if (toastHelper != null && CURRENTTOAST == style) {
+            toastHelper.setText(text);
+            toastHelper.setDuration(duration);
         } else {
-            ToastHelper mToast = new ToastHelper(MyApplication.getApplication(),style);
-            mToast.setText(text);
-            mToast.setDuration(duration);
-            sToast = new WeakReference<>(mToast);
+            reset();
+            toastHelper = new ToastHelper(MyApplication.getApplication(),style);
+            toastHelper.setText(text);
+            toastHelper.setDuration(duration);
         }
-        return sToast.get();
+        return toastHelper;
     }
 
     /**
@@ -128,8 +127,13 @@ public class ToastHelper extends AbstractToast {
     @Override
     public void show() {
         String message = mTextView.getText().toString();
-        if (!TextUtils.isEmpty(message) && sToast != null && sToast.get() != null) {
+        if (!TextUtils.isEmpty(message) && toastHelper != null ) {
+            Logger.d("ToastHelper show1>>>"+ message);
             super.show();
         }
+    }
+
+    public static void reset() {
+        toastHelper = null;
     }
 }
