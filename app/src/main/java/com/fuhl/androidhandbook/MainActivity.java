@@ -1,5 +1,6 @@
 package com.fuhl.androidhandbook;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import com.fuhl.androidhandbook.api.BaseObserver;
 import com.fuhl.androidhandbook.api.RetrofitManager;
 import com.fuhl.androidhandbook.api.service.FileUploadService;
 import com.fuhl.androidhandbook.api.service.LoginService;
+import com.fuhl.androidhandbook.dialog.InputDialog;
 import com.fuhl.androidhandbook.dialog.LoadingDialog;
 import com.fuhl.androidhandbook.dialog.MessageDialog;
 import com.fuhl.androidhandbook.toast.ToastHelper;
@@ -31,7 +33,7 @@ import okhttp3.RequestBody;
  * @author tony
  */
 public class MainActivity extends AppCompatActivity {
-    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast","文字toast","Loading对话框","消息对话框"};
+    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast", "文字toast", "Loading对话框", "消息对话框", "输入对话框"};
 
     ListView mListview;
 
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setListview();
     }
 
-    public void setListview(){
+    public void setListview() {
         mListview.setAdapter(new ArrayAdapter(MainActivity.this, R.layout.item, ITEMS));
         mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
                     case 6:
                         showMessageDialog();
                         break;
+                    case 7:
+                        showInputDialog();
+                        break;
                     default:
                         break;
                 }
@@ -77,8 +82,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void showMessageDialog(){
-        MessageDialog.show(this,"消息提示框","你已报名成功了","知道了",new DialogInterface.OnClickListener(){
+    public void showInputDialog() {
+        InputDialog.show(this, "验证", "请出入正确的用户名：", new InputDialog.InputDialogOkListener() {
+            @Override
+            public void onClick(Dialog dialog, String inputText) {
+                dialog.dismiss();
+                ToastHelper.makeText(inputText, Toast.LENGTH_SHORT, ToastHelper.ONLYWORDTOAST).show();
+            }
+        });
+    }
+
+    public void showMessageDialog() {
+        MessageDialog.show(this, "消息提示框", "你已报名成功了", "知道了", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -86,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void showLoadingDialog(){
-        LoadingDialog.show(this, "载入中...",0);
+    public void showLoadingDialog() {
+        LoadingDialog.show(this, "载入中...", 0);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -97,24 +112,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showNormalToast() {
-        ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT,ToastHelper.NORMALTOAST).show();
+        ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT, ToastHelper.NORMALTOAST).show();
     }
 
     public void showSuccessToast() {
-        ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT,ToastHelper.SUCCESSWITHICONTOAST).show();
+        ToastHelper.makeText("关注成功", Toast.LENGTH_SHORT, ToastHelper.SUCCESSWITHICONTOAST).show();
     }
 
     public void showFailToast() {
-        ToastHelper.makeText("关注失败", Toast.LENGTH_SHORT,ToastHelper.FAILWITHICONTOAST).show();
+        ToastHelper.makeText("关注失败", Toast.LENGTH_SHORT, ToastHelper.FAILWITHICONTOAST).show();
     }
 
     public void showWarnToast() {
-        ToastHelper.makeText("提示", Toast.LENGTH_SHORT,ToastHelper.WARNWITHICONTOAST).show();
+        ToastHelper.makeText("提示", Toast.LENGTH_SHORT, ToastHelper.WARNWITHICONTOAST).show();
     }
 
     public void showToast() {
-        ToastHelper.makeText("登录成功！", Toast.LENGTH_SHORT,ToastHelper.ONLYWORDTOAST).show();
+        ToastHelper.makeText("登录成功！", Toast.LENGTH_SHORT, ToastHelper.ONLYWORDTOAST).show();
     }
+
     public void login() {
         RetrofitManager.getClient().create(LoginService.class).auth(new LoginService.LoginRequest())
                 .subscribeOn(Schedulers.io())

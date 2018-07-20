@@ -38,7 +38,7 @@ public class ToastHelper extends AbstractToast {
     public static final int WARNWITHICONTOAST = 1;
 
     /**
-     * 警告
+     * 只提示文字
      */
     public static final int ONLYWORDTOAST = 4;
 
