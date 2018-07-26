@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".image.ImageCaseActivity"/>
+        <activity android:name=".image.NineImageViewActivity"/>
     </application>
 
 </manifest>

@@ -3,8 +3,11 @@ package com.fuhl.androidhandbook;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -27,6 +30,7 @@ import com.fuhl.androidhandbook.dialog.MessageDialog;
 import com.fuhl.androidhandbook.dialog.NiceDialog;
 import com.fuhl.androidhandbook.dialog.ViewConvertListener;
 import com.fuhl.androidhandbook.dialog.ViewHolder;
+import com.fuhl.androidhandbook.image.ImageCaseActivity;
 import com.fuhl.androidhandbook.toast.ToastHelper;
 
 import java.io.File;
@@ -41,7 +45,7 @@ import okhttp3.RequestBody;
  * @author tony
  */
 public class MainActivity extends AppCompatActivity {
-    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast", "文字toast", "Loading对话框", "消息对话框", "输入对话框","底部评论对话框","分享对话框","底部弹出设置对话框","弹出广告对话框","确认对话框"};
+    public static final String[] ITEMS = {"横条toast", "成功toast", "错误toast", "警告toast", "文字toast", "Loading对话框", "消息对话框", "输入对话框","底部评论对话框","分享对话框","底部弹出设置对话框","弹出广告对话框","确认对话框","图片加载示例"};
 
     ListView mListview;
 
@@ -98,11 +102,18 @@ public class MainActivity extends AppCompatActivity {
                     case 12:
                         showConfirmDialog();
                         break;
+                    case 13:
+                        showImageViewPage();
+                        break;
                     default:
                         break;
                 }
             }
         });
+    }
+
+    public void showImageViewPage(){
+        startActivity(new Intent(MainActivity.this, ImageCaseActivity.class));
     }
 
     public void showConfirmDialog() {
