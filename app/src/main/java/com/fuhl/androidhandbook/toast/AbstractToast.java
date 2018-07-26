@@ -6,7 +6,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/17
  */
 public abstract class AbstractToast extends Toast {

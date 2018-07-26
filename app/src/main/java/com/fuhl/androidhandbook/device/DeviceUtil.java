@@ -12,7 +12,7 @@ import com.fuhl.androidhandbook.MyApplication;
 import java.util.UUID;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/17
  */
 public class DeviceUtil {

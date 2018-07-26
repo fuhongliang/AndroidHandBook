@@ -14,7 +14,7 @@ import io.reactivex.disposables.Disposable;
 import retrofit2.HttpException;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/17
  */
 public abstract class BaseObserver <T> implements Observer<BaseEntity<T>> {

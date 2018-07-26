@@ -7,7 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/17
  */
 public interface LoginService {

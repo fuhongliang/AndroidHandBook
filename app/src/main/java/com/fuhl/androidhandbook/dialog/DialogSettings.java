@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/19
  */
 public class DialogSettings {

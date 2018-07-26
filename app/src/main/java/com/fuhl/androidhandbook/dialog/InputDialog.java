@@ -22,7 +22,7 @@ import static com.fuhl.androidhandbook.dialog.DialogSettings.dialog_theme;
 import static com.fuhl.androidhandbook.dialog.DialogSettings.showNextDialog;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/19
  */
 public class InputDialog  extends BaseDialog {

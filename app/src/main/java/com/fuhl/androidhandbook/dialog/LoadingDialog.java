@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.fuhl.androidhandbook.R;
 
 /**
- * @author tony  自动生成帅哥一枚，谁用谁知道
+ * @author tony
  * @date 2018/7/19
  */
 public class LoadingDialog extends BaseDialog {
