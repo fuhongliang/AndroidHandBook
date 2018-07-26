@@ -86,4 +86,28 @@ Toast分为五种类型
             }
         });
  ```  
+ # 评论对话框 
+ ![](./pic/commitdialog.gif) 
+ ``` java 
+  NiceDialog.init().setLayoutId(R.layout.commit_layout)
+                .setConvertListener(new ViewConvertListener() {
+                    @Override
+                    public void convertView(ViewHolder holder, final BaseNiceDialog dialog) {
+                        final EditText editText = holder.getView(R.id.edit_input);
+                        editText.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.showSoftInput(editText, 0);
+                            }
+                        });
+                    }
+                })
+                .setShowBottom(true)
+                .show(getSupportFragmentManager());
+                
+``` 
+# 其他对话框 
+ ![](./pic/otherdialog.gif)  
+ 
  
